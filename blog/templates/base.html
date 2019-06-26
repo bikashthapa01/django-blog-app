@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{%block title%}Awesome Blog{%endblock%}</title>
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+</head>
+<body>
+
+	<header class="site_header"> 
+		<div class="site_title">
+			<h1><a href="{% url 'home'%}">Awesome Blog</a></h1>
+			<div class="title_menu"> 
+				{% if user.is_authenticated %}
+					<a href="{% url 'post-new' %}"> + New Post </a> | <a href="{% url 'logout' %}"> Logout</a> 
+				{% else %}
+					<a href="{% url 'login' %}">Login </a> | <a href="{% url 'register' %}"> Register</a>
+				{%endif%}
+			</div>
+		</div>
+	</header>
+
+	<div class="content_wrapper">
+		<div class="content">
+			{% block content %}
+				<h2>In Base Template</h2>
+			{% endblock%}
+		</div>
+		<div class="sidebar">
+			<div class="widget">
+				<h1 class="widget_title">Sidebar Title</h1>
+				<p class="widget_content">Just a sample text.</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

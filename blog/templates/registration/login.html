@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+{% block title %}
+	Login | Awesome Blog
+{% endblock %}
+
+{% block content %}
+<div class="new_post">
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button>Login</button> 
+		<p> <a href="{% url 'register' %}">Create New Account </a></p>
+	</form>
+</div>
+{% endblock%}
